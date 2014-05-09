@@ -1,14 +1,23 @@
 @import 'bourbon';
 
+html,
+body {
+  height: 100%;
+}
+
 body { margin: 0 }
 
 #river {
     list-style: none;
     padding: 0;
     margin: 0;
+    height: 100%;
+}
 
-    li {
-        min-height: 100px;
-        max-width: 30%;
-    }
+.photo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 90%;
+    height: 90%;
 }
