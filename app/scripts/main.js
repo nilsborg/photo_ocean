@@ -89,8 +89,6 @@ var summonRan = function () {
             .on('webkitTransitionEnd', function () { $(this).remove(); });
     }
 
-    console.log(sunCalc);
-
     // watch out for sunset and dawn
     if (currentTime < sunCalc.sunrise) {
         $('body').removeClass();
@@ -105,9 +103,6 @@ var summonRan = function () {
         $('body').removeClass();
         $('body').addClass('sunset');
     }
-
-    console.log(currentTime);
-    console.log(sunCalc.sunset);
 
     // make Ran return to check on his villagers
     window.setTimeout(summonRan, 10000);
