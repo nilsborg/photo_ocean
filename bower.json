@@ -4,7 +4,8 @@
   "dependencies": {
     "jquery": "~1.10.2",
     "bourbon": "~4.0.1",
-    "neat": "~1.6.0"
+    "neat": "~1.6.0",
+    "suncalc": "*"
   },
   "devDependencies": {}
 }

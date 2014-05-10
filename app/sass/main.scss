@@ -3,10 +3,12 @@
 html,
 body {
   height: 100%;
-  background-color: rgb(30, 30, 30);
 }
 
-body { margin: 0 }
+body {
+  margin: 0;
+  transition: all 30s;
+}
 
 #river {
   list-style: none;
@@ -26,13 +28,13 @@ body { margin: 0 }
   height: 90%;
   position: absolute;
   top: 5%;
-  transform: translateX(-100%);
+  transform: translateX(100%);
 
   &.animating {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 
-  div {
+  .title {
     text-align: center;
     position: absolute;
     width: 100%;
@@ -41,15 +43,64 @@ body { margin: 0 }
     &.top { top: -30px }
 
     span {
-      background-color: black;
-      color: rgb(70, 70, 70);
+      transition: all 25s;
       font-family: Helvetica;
-      // font-weight: bold;
       font-size: 10px;
       text-transform: uppercase;
       display: inline-block;
       padding: 6px 20px;
       border-radius: 1px;
     }
+  }
+}
+
+// themes
+
+body.sunrise {
+  background: linear-gradient(#FFEE80, #FFE8BE);
+
+  .photo {
+    opacity: .8;
+  }
+
+  .title span {
+    background-color: rgba(#FFEE80, .8);
+    color: shade(#FFEE80, 40%);
+  }
+}
+
+body.day {
+  background-color: rgb(245, 245, 245);
+
+  .title span {
+    background-color: rgb(230, 230, 230);
+    color: rgb(150, 150, 150);
+  }
+}
+
+body.sunset {
+  background: linear-gradient(#102040, #FFE8BE);
+
+  .photo {
+    opacity: .9;
+  }
+
+  .title span {
+    background-color: rgba(#102040, .8);
+    color: tint(#102040, 40%);
+  }
+}
+
+body.night {
+  background: linear-gradient(rgb(30, 30, 30), rgb(10, 10, 10));
+
+  .photo {
+    filter: grayscale(100%);
+    opacity: .5;
+  }
+
+  .title span {
+    background-color: black;
+    color: rgb(70, 70, 70);
   }
 }
