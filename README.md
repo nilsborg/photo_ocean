@@ -15,7 +15,7 @@ BTW: Ran is the god of the ocean in viking mythology - just in case you're wonde
 Building this thing
 -------------------
 
-1. Clone the repo somewhere (caiptn obivouuuusss)
+1. Clone the repo 
 2. Install packages required for building ```bower install && npm install```
 3. Once all that stuff is installed you can run grunt in dev mode, if you wanna hack around this thing ```grunt serve``` or to create a static blob to uplaod somewhere running ```grunt build```.
 
