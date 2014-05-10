@@ -3,28 +3,53 @@
 html,
 body {
   height: 100%;
+  background-color: rgb(30, 30, 30);
 }
 
 body { margin: 0 }
 
 #river {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
 .photo {
-    transition: all 8s linear;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translateX(-100%);
+  // transition: all 8s linear;
+  transition-property: transform;
+  transition-timing-function: linear;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  top: 5%;
+  transform: translateX(-100%);
 
-    &.animating {
-      transform: translateX(100%);
+  &.animating {
+    transform: translateX(100%);
+  }
+
+  div {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+
+    &.bottom { bottom: -30px }
+    &.top { top: -30px }
+
+    span {
+      background-color: black;
+      color: rgb(70, 70, 70);
+      font-family: Helvetica;
+      // font-weight: bold;
+      font-size: 10px;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 1px;
     }
+  }
 }
