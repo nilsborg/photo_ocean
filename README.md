@@ -1,6 +1,8 @@
 photo ocean
 ===========
 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/tyj6rZivVCk/0.jpg)](http://www.youtube.com/watch?v=tyj6rZivVCk)
+
 Loads photos from your flickr stream and displays them in an endless loop best viewed in fullscreen
 
 This whole thing is a result of half a bottle jack daniels, the front trend conference 2014 in warsaw and two awesome dudes who had a great plan.
