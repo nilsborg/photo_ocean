@@ -7,51 +7,61 @@ body {
 
 body {
   margin: 0;
-  transition: all 30s;
 }
 
 #river {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
   height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .photo {
-  // transition: all 8s linear;
   transition-property: transform;
   transition-timing-function: linear;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  width: 100%;
-  height: 90%;
   position: absolute;
-  top: 5%;
-  transform: translateX(100%);
+  top: 10%;
+  height: 80%;
+  width: 100%;
+
+  transform: translateX(105%);
 
   &.animating {
-    transform: translateX(-100%);
+    transform: translateX(-105%);
   }
 
-  .title {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-
-    &.bottom { bottom: -30px }
-    &.top { top: -30px }
-
-    span {
-      transition: all 25s;
-      font-family: Helvetica;
-      font-size: 10px;
-      text-transform: uppercase;
-      display: inline-block;
-      padding: 6px 20px;
-      border-radius: 1px;
-    }
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
   }
+}
+
+.photo-wrapper {
+  vertical-align: middle;
+  display: inline-block;
+  text-align: right;
+
+  img {
+    display: block;
+    max-height: 100%;
+    box-shadow: 0 0 5px rgba(black, .2);
+  }
+}
+
+.title {
+  font-family: Helvetica;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 5px;
+  width: 160px;
+  text-align: left;
 }
 
 // themes
@@ -63,7 +73,7 @@ body.sunrise {
     opacity: .8;
   }
 
-  .title span {
+  .title {
     background-color: rgba(#FFEE80, .8);
     color: shade(#FFEE80, 40%);
   }
@@ -72,7 +82,7 @@ body.sunrise {
 body.day {
   background-color: rgb(245, 245, 245);
 
-  .title span {
+  .title {
     background-color: rgb(230, 230, 230);
     color: rgb(150, 150, 150);
   }
@@ -85,7 +95,7 @@ body.sunset {
     opacity: .9;
   }
 
-  .title span {
+  .title {
     background-color: rgba(#102040, .8);
     color: tint(#102040, 40%);
   }
@@ -99,7 +109,7 @@ body.night {
     opacity: .5;
   }
 
-  .title span {
+  .title {
     background-color: black;
     color: rgb(70, 70, 70);
   }

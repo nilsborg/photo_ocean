@@ -6,6 +6,7 @@
 /*global userId:true */
 /*global perPage:true */
 /*global totalPages:true */
+/*global sortOrder:true */
 /*global SunCalc:true */
 
 /**
@@ -28,8 +29,10 @@ var constructPhotoUrl = function (farmId, serverId, Id, secret) {
  * @param {integer} page
  */
 var loadPhotos = function (page) {
-    $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&user_id=' + userId + '&per_page=' + perPage + '&page=' + page + '&format=json&nojsoncallback=1&sort=date-taken-asc', function(data) {
+    $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&user_id=' + userId + '&per_page=' + perPage + '&page=' + page + '&format=json&nojsoncallback=1&sort=date-taken-' + sortOrder, function(data) {
         var photos = data.photos.photo;
+
+        console.log(photos);
 
         // store the total number of pages depending on how many photos we load per page
         totalPages = data.photos.pages;
@@ -38,22 +41,29 @@ var loadPhotos = function (page) {
         $.each(photos, function () {
             var photoUrl = constructPhotoUrl(this.farm, this.server, this.id, this.secret),
                 animationTime = 25 + (Math.random() * 5),
-                yOffSet = (Math.random() * 8) - 4;
+                yOffSet = (Math.random() * 8) - 8;
 
-            var photoWrapper = $('<li/>', {
+
+            // contruct elements and throw them into the river
+            var animationItem = $('<li/>', {
                 class: 'photo',
-                style: 'background-image: url("' + photoUrl + '"); -webkit-transition-duration: ' + animationTime + 's; margin-top: ' + yOffSet + '%;'
+                style: '-webkit-transition-duration: ' + animationTime + 's; margin-top: ' + yOffSet + '%;'
             }).appendTo('#river');
+
+            var photoWrapper = $('<div/>', {
+                class: 'photo-wrapper'
+            }).appendTo(animationItem);
+
+            var photo = $('<img/>', {
+                src: photoUrl
+            }).appendTo(photoWrapper);
 
             // if the photo has a title add that too
             if (this.title !== '') {
-                var titleWrapper = $('<div class="title"><span>' + this.title + '</span></div>').appendTo(photoWrapper);
-
-                if (yOffSet > 0) {
-                    titleWrapper.addClass('top');
-                } else {
-                    titleWrapper.addClass('bottom');
-                }
+                var title = $('<span/>', {
+                    class: 'title',
+                    text: this.title
+                }).appendTo(photoWrapper);
             }
         });
     });
@@ -89,23 +99,23 @@ var summonRan = function () {
             .on('webkitTransitionEnd', function () { $(this).remove(); });
     }
 
+
+
     // watch out for sunset and dawn
+    $('body').removeClass();
+
     if (currentTime < sunCalc.sunrise) {
-        $('body').removeClass();
         $('body').addClass('night');
     } else if (currentTime < sunCalc.sunriseEnd) {
-        $('body').removeClass();
         $('body').addClass('sunrise');
     } else if (currentTime < sunCalc.sunsetStart) {
-        $('body').removeClass();
         $('body').addClass('day');
     } else {
-        $('body').removeClass();
         $('body').addClass('sunset');
     }
 
     // make Ran return to check on his villagers
-    window.setTimeout(summonRan, 10000);
+    window.setTimeout(summonRan, 8000);
 };
 
 // summon Ran for the first time
